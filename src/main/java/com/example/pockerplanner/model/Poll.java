@@ -39,7 +39,7 @@ public class Poll {
 
     @ManyToOne
     @JoinColumn(name = "session_id")
-    private Session session;
+    private Room room;
 
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
     private List<Vote> votes = new ArrayList<>();

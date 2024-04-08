@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "session", indexes = { @Index(name = "date_idx", columnList = "lastAction") })
+//@Table(name = "session", indexes = { @Index(name = "date_idx", columnList = "lastAction") })
 @Getter
 @Setter
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
-public class Session {
+public class Room {
 
 
     @Id
@@ -32,16 +32,16 @@ public class Session {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime lastAction;
+//
+//    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<User> members = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Poll> polls = new ArrayList<>();
 
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<User> members = new ArrayList<>();
-
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Poll> polls = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "current_poll_id")
-    private Poll currentPoll;
+//    @ManyToOne
+//    @JoinColumn(name = "current_poll_id")
+//    private Poll currentPoll;
 
 
 }

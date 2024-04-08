@@ -1,16 +1,27 @@
 package com.example.pockerplanner.service;
 
-import com.example.pockerplanner.model.Session;
+import com.example.pockerplanner.dto.RoomDTO;
+import com.example.pockerplanner.model.Room;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public interface SessionService {
+public interface RoomService {
 
-    Session createSession(Session session);
+    Room save(RoomDTO roomDTO);
+
+    Optional<Room> findRoomById(Long roomId);
+
+
+    List<Room> findAll();
+
+    Room updateRoom(RoomDTO roomDTO, Long roomId);
+
+    void deleteRoom(Long roomId);
 
 //    Session getSession(UUID sessionId);
 //    void addParticipant(String sessionId, String participantId);
@@ -19,7 +30,7 @@ public interface SessionService {
 //    List<Session> getAllSessions();
 //    void deleteSession(String sessionId);
 
-    List<Map<String, Object>> getActiveSessions();
+//    List<Map<String, Object>> getActiveSessions();
 
 
 }

@@ -23,7 +23,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "session_id")
-    private Session session;
+    private Room room;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Vote> votes = new ArrayList<>();
