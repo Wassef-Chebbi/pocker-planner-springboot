@@ -21,8 +21,6 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room save(RoomDTO roomDTO) {
-
-
         Room room = Room.builder()
                 .name(roomDTO.getName())
                 .cardSet(roomDTO.getCardSet())

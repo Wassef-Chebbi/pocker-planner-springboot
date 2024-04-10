@@ -36,12 +36,12 @@ public class sessionController {
     }
 
 
-    @GetMapping("/rooms/{roomId}")
+    @GetMapping("/rooms/{id}")
     public ResponseEntity<List<Room>> getRoomById(
-            @PathVariable Long roomId
+            @PathVariable Long id
     )
     {
-        Optional<Room> room = roomService.findRoomById(roomId);
+        Optional<Room> room = roomService.findRoomById(id);
         return new ResponseEntity(room, HttpStatus.OK);
     }
 
