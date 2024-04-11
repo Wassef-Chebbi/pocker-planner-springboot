@@ -24,17 +24,17 @@ public class Room {
 
     private String name;
 
-    private Boolean isPrivate;
+    //private Boolean isPrivate;
 
-    private String token;
+    //private String token;
 
     private Integer cardSet;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime lastAction;
-//
-//    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<User> members = new ArrayList<>();
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<User> members = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Poll> polls = new ArrayList<>();

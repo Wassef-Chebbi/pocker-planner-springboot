@@ -36,8 +36,8 @@ public class sessionController {
     }
 
 
-    @GetMapping("/rooms/{id}")
-    public ResponseEntity<List<Room>> getRoomById(
+    @GetMapping(value = "/rooms/{id}")
+    public ResponseEntity<Optional<Room>> getRoomById(
             @PathVariable Long id
     )
     {
