@@ -1,27 +1,62 @@
 package com.example.pockerplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Formula;
 
 @Entity
-@Table(name = "vote")
+@Table(name = "Vote")
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Vote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "voteId")
+    private Long voteid;
 
-    private Float value;
+    @Column(name = "voteValue")
+    private Integer value;
 
     private Boolean highlighted = false;
 
-    @ManyToOne
-    @JoinColumn(name = "poll_id")
-    private Poll poll;
+
 
     @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "room_id")
+    private Room room;
+
+    @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User member;
+
+
+    @Transient
+    private Long roomId;
+
+    @Transient
+    private Long userId;
+
+    @PostLoad
+    private void populateIds() {
+        if (room != null) {
+            roomId = room.getRoomid();
+        }
+        if (member != null) {
+            userId = member.getId();
+        }
+    }
+
+//    @Formula("select v.user_id from Vote v")
+//    private Long idUser ;
+
+//    private Long idRoom = room.getRoomid();
+
 
 }

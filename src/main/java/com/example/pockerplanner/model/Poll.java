@@ -41,8 +41,8 @@ public class Poll {
     @JoinColumn(name = "session_id")
     private Room room;
 
-    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
-    private List<Vote> votes = new ArrayList<>();
+//    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
+//    private List<Vote> votes = new ArrayList<>();
 
 
 }

@@ -22,7 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 @CrossOrigin("*")
-public class sessionController {
+public class RoomController {
 
     @Autowired
     private RoomService roomService;
