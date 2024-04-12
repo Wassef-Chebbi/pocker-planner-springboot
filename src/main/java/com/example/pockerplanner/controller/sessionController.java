@@ -37,11 +37,11 @@ public class sessionController {
 
 
     @GetMapping(value = "/rooms/{id}")
-    public ResponseEntity<Optional<Room>> getRoomById(
+    public ResponseEntity<Room> getRoomById(
             @PathVariable Long id
     )
     {
-        Optional<Room> room = roomService.findRoomById(id);
+        Room room = roomService.findRoomById(id);
         return new ResponseEntity(room, HttpStatus.OK);
     }
 
@@ -61,6 +61,15 @@ public class sessionController {
     {
         roomService.deleteRoom(roomId);
         return new ResponseEntity<>("Room deleted successfully",HttpStatus.OK);
+    }
+
+    @PostMapping("/join/{roomId}/{userId}")
+    public ResponseEntity<String> addMember(
+            @PathVariable Long roomId,
+            @PathVariable Long userId)
+    {
+        String room = roomService.addUserToRoom(userId,roomId);
+        return new ResponseEntity<>(room,HttpStatus.OK);
     }
 
 

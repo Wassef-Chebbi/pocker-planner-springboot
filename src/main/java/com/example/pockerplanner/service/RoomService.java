@@ -14,7 +14,7 @@ public interface RoomService {
 
     Room save(RoomDTO roomDTO);
 
-    Optional<Room> findRoomById(Long roomId);
+    Room findRoomById(Long roomId);
 
 
     List<Room> findAll();
@@ -22,6 +22,8 @@ public interface RoomService {
     Room updateRoom(RoomDTO roomDTO, Long roomId);
 
     void deleteRoom(Long roomId);
+
+    String addUserToRoom(Long userId, Long roomId);
 
 //    Session getSession(UUID sessionId);
 //    void addParticipant(String sessionId, String participantId);
