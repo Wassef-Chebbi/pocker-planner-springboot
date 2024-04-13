@@ -13,7 +13,7 @@ public interface VoteService {
 
     Vote save(VoteDTO vote);
 
-    Vote findVoteById(Long roomId);
+    List<Vote> findVotesByRoomId(Long roomId);
 
     List<Vote> findAll();
 

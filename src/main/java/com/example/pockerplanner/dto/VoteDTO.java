@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class VoteDTO {
 
     private Integer value;
+    private Long roomId;
+    private Long userId;
 }

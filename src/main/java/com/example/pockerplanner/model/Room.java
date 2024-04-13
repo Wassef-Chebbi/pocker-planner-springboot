@@ -36,11 +36,16 @@ public class Room {
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<User> members ;
 
+
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Vote> votes = new ArrayList<>();
+
+
     public void addUser(User user) {
         members.add(user);
         //user.setRoom(this);
     }
-
 
 
 

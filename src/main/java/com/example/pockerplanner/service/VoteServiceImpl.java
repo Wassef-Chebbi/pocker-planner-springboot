@@ -2,6 +2,7 @@ package com.example.pockerplanner.service;
 
 import com.example.pockerplanner.Repository.VoteRepository;
 import com.example.pockerplanner.dto.VoteDTO;
+import com.example.pockerplanner.model.Room;
 import com.example.pockerplanner.model.Vote;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,23 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public Vote save(VoteDTO vote) {
-        return null;
+        log.info("save() executed successfully");
+        Vote newVote = Vote.builder()
+                .value(vote.getValue())
+                .roomId(vote.getRoomId())
+                .userId(vote.getUserId())
+                .build();
+        log.info("Room:"+newVote.toString());
+        return voteRepository.save(newVote);
     }
 
     @Override
-    public Vote findVoteById(Long roomId) {
-        return null;
+    public List<Vote> findVotesByRoomId(Long roomId) {
+        log.info("findVotesByRoomId() executed successfully");
+        return voteRepository.findByRoomId(roomId);
     }
+
+
 
     @Override
     public List<Vote> findAll() {

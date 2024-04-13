@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/api/session")
+@RequestMapping("/api/room")
 @RequiredArgsConstructor
 @Slf4j
 @CrossOrigin("*")
@@ -28,7 +28,9 @@ public class RoomController {
     private RoomService roomService;
 
 
-    @GetMapping("/rooms")
+
+    // gets the list of available rooms
+    @GetMapping("/getAll")
     public ResponseEntity<List<Room>> getRooms()
     {
         List rooms = roomService.findAll();
@@ -36,7 +38,8 @@ public class RoomController {
     }
 
 
-    @GetMapping(value = "/rooms/{id}")
+    // get the actual room (desired)
+    @GetMapping(value = "/getById/{id}")
     public ResponseEntity<Room> getRoomById(
             @PathVariable Long id
     )
@@ -45,8 +48,8 @@ public class RoomController {
         return new ResponseEntity(room, HttpStatus.OK);
     }
 
-
-    @PostMapping("/create")
+    // creates a room
+    @PostMapping("/add")
     public ResponseEntity<Room> saveDepartment(
             @RequestBody RoomDTO room)
     {
@@ -55,7 +58,8 @@ public class RoomController {
     }
 
 
-    @DeleteMapping("/rooms/{roomId}")
+    // deleetes the room
+    @DeleteMapping("/delete/{roomId}")
     public ResponseEntity<String> deleteRoom(
             @PathVariable Long roomId)
     {
@@ -63,7 +67,8 @@ public class RoomController {
         return new ResponseEntity<>("Room deleted successfully",HttpStatus.OK);
     }
 
-    @PostMapping("/join/{roomId}/{userId}")
+    // adds a member to a room : (let him join it)
+    @PostMapping("/join/room/{roomId}/user/{userId}")
     public ResponseEntity<String> addMember(
             @PathVariable Long roomId,
             @PathVariable Long userId)
