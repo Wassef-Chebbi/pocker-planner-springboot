@@ -69,12 +69,13 @@ public class RoomController {
 
     // adds a member to a room : (let him join it)
     @PostMapping("/join/room/{roomId}/user/{userId}")
-    public ResponseEntity<String> addMember(
+    public ResponseEntity<?> addMember(
             @PathVariable Long roomId,
             @PathVariable Long userId)
     {
-        String room = roomService.addUserToRoom(userId,roomId);
-        return new ResponseEntity<>(room,HttpStatus.OK);
+        //String room =
+                roomService.addUserToRoom(userId,roomId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

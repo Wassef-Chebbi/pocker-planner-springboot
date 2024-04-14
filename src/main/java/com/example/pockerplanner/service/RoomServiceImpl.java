@@ -68,7 +68,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public String addUserToRoom(Long userId, Long roomId) {
+    public void addUserToRoom(Long userId, Long roomId) {
 
         log.info("addUserToRoom() executed successfully");
         Room room = roomRepository.findById(roomId).get();
@@ -78,10 +78,10 @@ public class RoomServiceImpl implements RoomService {
             room.addUser(user);
             roomRepository.save(room);
             log.info("user "+ user.getId()+" added to room "+room.getRoomid()+" successfully");
-            return room.toString();
+            //return room.toString();
         } else {
             log.info("User with ID "+ user.getId() +" already exists in the "+ room.getRoomid()+" room");
-            return "User with ID " + user.getId() + " already exists in the room";
+            //return "User with ID " + user.getId() + " already exists in the room";
         }
     }
 

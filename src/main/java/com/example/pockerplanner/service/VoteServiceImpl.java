@@ -1,5 +1,7 @@
 package com.example.pockerplanner.service;
 
+import com.example.pockerplanner.Repository.RoomRepository;
+import com.example.pockerplanner.Repository.UserRepository;
 import com.example.pockerplanner.Repository.VoteRepository;
 import com.example.pockerplanner.dto.VoteDTO;
 import com.example.pockerplanner.model.Room;
@@ -16,6 +18,10 @@ public class VoteServiceImpl implements VoteService {
 
     @Autowired
     private VoteRepository voteRepository;
+    @Autowired
+    private RoomRepository roomRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Override
@@ -23,11 +29,21 @@ public class VoteServiceImpl implements VoteService {
         log.info("save() executed successfully");
         Vote newVote = Vote.builder()
                 .value(vote.getValue())
+                .room(roomRepository.findById(vote.getRoomId()).get())
+                .member(userRepository.findById(vote.getUserId()).get())
                 .roomId(vote.getRoomId())
                 .userId(vote.getUserId())
                 .build();
         log.info("Room:"+newVote.toString());
         return voteRepository.save(newVote);
+    }
+
+    @Override
+    public Vote update(VoteDTO vote, Long voteId) {
+        Vote updatedVote = voteRepository.findById(voteId).get();
+        updatedVote.setValue(vote.getValue());
+        return voteRepository.save(updatedVote);
+
     }
 
     @Override

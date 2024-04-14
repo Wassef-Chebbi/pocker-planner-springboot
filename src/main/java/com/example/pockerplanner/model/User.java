@@ -28,6 +28,6 @@ public class User {
     @JsonIgnore
     private Room room;
 
-//    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-//    private List<Vote> votes = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Vote> votes = new ArrayList<>();
 }

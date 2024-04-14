@@ -53,10 +53,7 @@ public class Vote {
         }
     }
 
-//    @Formula("select v.user_id from Vote v")
-//    private Long idUser ;
 
-//    private Long idRoom = room.getRoomid();
 
 
 }

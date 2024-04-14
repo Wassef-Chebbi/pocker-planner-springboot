@@ -23,7 +23,7 @@ public interface RoomService {
 
     void deleteRoom(Long roomId);
 
-    String addUserToRoom(Long userId, Long roomId);
+    void addUserToRoom(Long userId, Long roomId);
 
 //    Session getSession(UUID sessionId);
 //    void addParticipant(String sessionId, String participantId);

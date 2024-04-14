@@ -35,12 +35,21 @@ public class VoteController {
     }
 
     // let the member to ote for in a specific room
-    @PostMapping("/add/room/{roomId}/user/{userId}")
+    @PostMapping("/add")
     public ResponseEntity<Vote> saveVote(
             @RequestBody VoteDTO vote)
     {
         Vote savedVote = voteService.save(vote);
         return new ResponseEntity<>(savedVote, HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/update/{voteId}")
+    public ResponseEntity<Vote> updateVote(
+            @PathVariable Long voteId,
+            @RequestBody VoteDTO vote)
+    {
+        Vote updated = voteService.update(vote,voteId);
+        return new ResponseEntity<>(updated, HttpStatus.ACCEPTED);
     }
 
     // for the admin user

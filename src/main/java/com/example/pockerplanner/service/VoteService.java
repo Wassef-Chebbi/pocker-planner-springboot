@@ -17,6 +17,8 @@ public interface VoteService {
 
     List<Vote> findAll();
 
+    Vote update(VoteDTO vote, Long voteID);
+
     Vote updateVote(VoteDTO voteDTO);
 
     void deleteVote(Long voteId);
